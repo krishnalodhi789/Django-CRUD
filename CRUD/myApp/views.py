@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 # from django.urls import 
 from .forms import myForm,picForm
-from .models import myRecords,userPics,images
+from .models import myRecords,userPics,images,profile
 # Create your views here.
 
 
@@ -63,3 +63,38 @@ def gallary(request):
         return redirect("gallary")
     imgs = images.objects.all()
     return render(request,'gallary.html',{'images':imgs})
+
+def profileCreate(request):
+    if request.method == "POST":
+        user = profile()
+        user.name=request.POST.get('name')
+        user.mobile=request.POST.get('mobile')
+        user.pic = request.FILES['image']
+        user.save()
+        return redirect("profileCollection")
+
+    return render(request,'profileCreate.html')
+
+def profileCollection(request):
+    profiles = profile.objects.all()
+    return render(request,'profileCollection',{'profiles':profiles})
+
+
+def deleteProfile(request,id):
+    user = profile.objects.get(id=id)
+    user.delete()
+    return redirect("profileCollection")
+
+
+def updateProfile(request, id):
+    if request.method=="POST":
+        user = profile.objects.get(id=id)
+        user.name = request.POST["name"]
+        user.mobile = request.POST["mobile"]
+        user.pic = request.FILES["image"]
+        user.save()
+        return redirect("profileCollection")
+    user = profile.objects.get(id=id)
+    return render(request,'updateProfile.html',{'user':user})
+
+

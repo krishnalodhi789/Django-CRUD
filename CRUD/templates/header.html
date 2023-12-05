@@ -19,10 +19,14 @@
             <a class="nav-link" href="{% url 'uploadImage' %}">upload Image</a>
           </li>
         </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+        <div>
+        <button class="btn">
+          <a class="nav-link" href="{% url 'profileCreate' %}">Profile Create</a>
+        </button>
+        <button class="btn">
+          <a class="nav-link" href="{% url 'profileCollection' %}">Profile Collection</a>
+        </button>
+        </div>
       </div>
     </div>
   </nav>

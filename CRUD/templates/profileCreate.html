@@ -19,32 +19,23 @@
   <div class="row py-3">
     <div class="col-4 m-auto shadow text-center">
       <h3 class="text-info text-center pb-3">Fill the form .....</h3>
-      <form action="insertRecord/" method='post'>
+      <form  method='post' enctype="multipart/form-data">
         {% csrf_token %}
         <div class="form-floating mb-3">
-          {{form.name}}
-          <label for="floatingname">name</label>
-        </div>
-        <div class="form-floating mb-3">
-          {{form.email}}
-          <label for="floatingemail">Email ID</label>
-        </div>
-        <div class="form-floating mb-3">
-        <div class="form-floating mb-3">
-          {{form.mobileNO}}
-          <label for="floatingmobile">Mobile NO </label>
-        </div>
-        <div class="form-floating mb-3">
-          {{form.city}}
-          <label for="floatingcity">City </label>
-        </div>
-        <div class="mb-3">
-          <label for="formFile" class="form-label">Choose a</label>
-          <input class="form-control" type="file" id="formFile">
-        </div>
-        <div class="mb-3">
-          <button type="submit" class="btn btn-success w-50 "> Submit</button>
-        </div>
+            <input type="text" class="form-control" id="floatingInput" name="name" placeholder="name@example.com" required>
+            <label for="floatingInput">Name</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingPassword" name="mobile" placeholder="Password" required>
+            <label for="floatingPassword">Mobile No</label>
+          </div>
+          <div class="mb-3 text-start">
+            <label for="formFile " class="form-label">Upload your image</label>
+            <input class="form-control" type="file" name="image" id="formFile" required>
+          </div>
+          <div class="text-center mb-3">
+            <button type="submit" class="btn btn-success px-3 w-50">Submit</button>
+          </div>
       </form>
     </div>
   </div>

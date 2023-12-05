@@ -14,3 +14,12 @@ class userPics(models.Model):
 
 class images(models.Model):
     image=models.ImageField(null=True, blank=True, upload_to='Images')
+
+
+class profile(models.Model):
+    name=models.CharField(max_length=100)
+    mobile  = models.CharField(max_length=100,null=True)
+    pic = models.ImageField(upload_to='images',null=True, blank=True,)
+
+    def __str__(self) -> str:
+        return self.name
